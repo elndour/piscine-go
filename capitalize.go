@@ -2,15 +2,19 @@ package piscine
 
 func Capitalize(s string) string {
 	n := []rune(s)
+	first := true
 
-	if !checkMg(n[0]) {
-		n[0] = n[0] - 32 + 32
-	}
 	for i := range n {
-		if (n[i] == ' ' || n[i] == '+') && checkMg(n[i+1]) {
-			n[i+1] = n[i+1] - 32
-		} else if (n[i] == ' ' || n[i] == '+') && (n[i+1] >= '0' && n[i+1] <= '9') {
-			n[i+1] = n[i+1] + 32 - 32
+		if checkMg(n[i]) && first {
+			if n[i] >= 'a' && n[i] <= 'z' {
+				n[i] = n[i] - 32
+			}
+			first = false
+
+		} else if n[i] >= 'A' && n[i] <= 'Z' {
+			n[i] = n[i] + 32
+		} else if !checkMg(n[i]) {
+			first = true
 		}
 	}
 
@@ -18,7 +22,7 @@ func Capitalize(s string) string {
 }
 
 func checkMg(b rune) bool {
-	if b >= 'a' && b <= 'z' {
+	if (b >= 'a' && b <= 'z') || (b >= 'A' && b <= 'Z') || (b >= '0' && b <= '9') {
 		return true
 	}
 
