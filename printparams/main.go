@@ -10,10 +10,12 @@ func main() {
 	a := os.Args
 
 	for i := range a {
-		for _, let := range a[i] {
-			z01.PrintRune(let)
-		}
-		z01.PrintRune('\n')
+		if i >= 1 {
+			for _, let := range a[i] {
+				z01.PrintRune(let)
+			}
 
+			z01.PrintRune('\n')
+		}
 	}
 }
