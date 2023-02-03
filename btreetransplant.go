@@ -2,7 +2,7 @@ package piscine
 
 func BTreeTransplant(root, node, rplc *TreeNode) *TreeNode {
 	if root == nil {
-		return nil
+		return root
 	}
 	if root.Left != nil && root.Left == node {
 		root.Left = rplc
