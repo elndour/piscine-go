@@ -1,0 +1,1 @@
+ls -CF --format=commas --time=access -t | sed 's/ //g'
